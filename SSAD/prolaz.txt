@@ -1,0 +1,63 @@
+~Za prolaz
+Product.service.ts
+export class ProductService {
+
+  readonly url = 'http://localhost:3000/products'
+  constructor() { }
+
+  async getAllProducts(): Promise<Product[]> {
+    const data = await fetch(this.url)
+    return await data.json()
+  }
+  async getById(id:number): Promise<Product[]> {
+    const data = await fetch(this.url+'/'+id)
+    return await data.json()
+  }
+
+product componenent.html
+
+  </div>
+        <div class="col-md-9">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Category</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @for(product of listProducts; track product){
+      
+                            <th scope="row">{{product.id}}</th>
+                            <td>{{product.title}}</td>
+                            <td>{{product.price}}</td>
+                            <td>{{product.brand}}</td>
+                            <td>{{product.category}}</td>
+                          </tr>
+                       }
+                       @else{
+                        <h2>Nema podataka</h2>
+                       }
+                    }
+              
+                </tbody>
+              </table>
+        </div>
+product.component.ts
+
+listProducts: Product[] = []
+  constructor(private servicesProduct: ProductService,
+    private router:Router
+
+  ) { 
+  }
+  ngOnInit(): void {
+    this.getAllProducts()
+  }
+
+  getAllProducts(): void {
+    this.servicesProduct.getAllProducts().then(x => {
+      this.listProducts = x

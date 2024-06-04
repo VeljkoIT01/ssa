@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h2>Filter</h2>
+            @for(category of categories; track category){
+                <input type="checkbox" 
+                [value]="category"
+                [checked]="selectCategory===category"
+                name="" id="" (input)="onSelectCategory(category)">
+                <label for="">{{category}}</label>
+                <br>
+            }
+        
+        </div>
+        <div class="col-md-9">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                   
+                    <th scope="col">Title</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Detalji</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @for(product of listProducts; track product){
+                       @if(product.category=== selectCategory || selectCategory==null){
+                        <tr (click)="detalji(product.id)">
+                            <th scope="row">{{product.id}}</th>
+                            <td>{{product.title}}</td>
+                            <td>{{product.price}}</td>
+                            <td>{{product.brand}}</td>
+                            <td>{{product.category}}</td>
+                            <button (click)="detalji(product.id)" class="btn btn-{{boj(product.id)}}">Detalji</button>
+                          </tr>
+                       }
+                       @else{
+                        <h2>Nema podataka</h2>
+                       }
+                    }
+              
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

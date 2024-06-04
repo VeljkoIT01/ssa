@@ -1,0 +1,37 @@
+Detaljno uputstvo za izradu drugog kolokvijuma!
+Ukoliko nije instalirano: node js se instalira preko sajta
+angular isto komanda preko sajta
+
+OSTALI KORACI
+Ide se na dummyjson i kopiraju se podaci(Ukoliko nema resursa ide se dummyjson.com/products npr
+
+u folderu na dekstopu se pokrece komanda ng new ispit koja dodaje angular fajlove
+ng new ispit isklikce se CSS i y se unosi
+udje se preko cmd u kreirani ispit i pokrece se komanda code . kako bi se otvorio vs code
+
+u src/app se kreira model package i u njemu se kreira model product.model.ts
+kopira se iz dummyjsona u json to typescript i rezultat se unosi u model. nije potrebno unositi root 
+
+instalira se json-server-npm komanda je:
+npm install json-server
+nakon toga se kreira db.json u celom folderu tako sto se klikne na ispit dole na dnu ;) i kopiraju se podaci json
+
+zatim se uspostavlja konekcija pomocu npx json-server db.json(mozda moze i watch)
+PROVERITI DA LI RADI 
+
+kreira se servis pomocu ng g s services/product (product se zameni valjda sa cime se radi)
+u product.service se dodaje readonly url
+ispod generisanog constructora se dodaju get funkcije
+
+zatim se kreiraju komponente pomocu ng g c components/product u TERMINALU tri tacke pored run-a klikni terminal
+product component spec se brise 
+dodaje se u index html za bootstrap skripte na dva mesta
+u product component html kopiras sa githuba tabelu
+u produc component.ts kopiras i izmenis sa githuba
+u app.routes.ts dodaje se path(kopiras sa githuba ko bi rekao)
+
+ng serve --open da bi testirao dal radi
+brise se sve iz app.component osim <router-outlet>
+OVO BI TREBALO DA JE PROLAZ
+za detalje
+ng g c components/detalji za kreiranje componente za detalja

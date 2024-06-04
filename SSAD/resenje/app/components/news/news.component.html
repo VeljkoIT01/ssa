@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row justify-content-center">
+       
+        <div class="col-md-9">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Detalji</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @for(news of listNews; track news){
+                        <tr (click)="detalji(news.id)">
+                            <th scope="row">{{news.id}}</th>
+                            <td>{{news.source_name}}</td>
+                            <td>{{news.author}}</td>
+                            <td>{{news.title}}</td>
+                            <td>{{news.description}}</td>
+                            <button (click)="detalji(news.id)" class="btn btn-{{boj(news.id)}}">Detalji</button>
+                          </tr>
+                       }
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
